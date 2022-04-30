@@ -4,14 +4,16 @@ import com.ugurbuga.followtvmovie.core.base.BaseRepository
 import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.data.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.data.model.PosterItemModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
 class FavoritesRepositoryImpl @Inject constructor(
-    private val favoritesDao: FavoritesDao
+    private val favoritesDao: FavoritesDao,
+    dispatcher: CoroutineDispatcher
 ) :
-    FavoritesRepository, BaseRepository() {
+    FavoritesRepository, BaseRepository(dispatcher) {
 
     override fun insert(note: PosterItemModel): Flow<ApiState<Unit>> {
         return onRoomCall { favoritesDao.insert(note) }

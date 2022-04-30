@@ -5,13 +5,15 @@ import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
 import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
 import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.TvShowDetailResponse
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class TvShowRepositoryImpl @Inject constructor(
-    private val tvShowService: TvShowService
+    private val tvShowService: TvShowService,
+    dispatcher: CoroutineDispatcher
 ) :
-    TvShowRepository, BaseRepository() {
+    TvShowRepository, BaseRepository(dispatcher) {
 
     override fun getPopularTvShows(page: Int): Flow<ApiState<PosterGeneralResponse>> {
         return onApiCall { tvShowService.getPopularTvShows(page) }

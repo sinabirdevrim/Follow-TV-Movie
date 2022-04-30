@@ -6,13 +6,15 @@ import com.ugurbuga.followtvmovie.data.api.services.PersonService
 import com.ugurbuga.followtvmovie.data.model.response.credit.CreditResponse
 import com.ugurbuga.followtvmovie.data.model.response.image.PersonImageResponse
 import com.ugurbuga.followtvmovie.data.model.response.person.PersonDetailResponse
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class PersonRepositoryImpl @Inject constructor(
-    private val personService: PersonService
+    private val personService: PersonService,
+    dispatcher: CoroutineDispatcher
 ) :
-    PersonRepository, BaseRepository() {
+    PersonRepository, BaseRepository(dispatcher) {
 
     override fun getPersonDetail(personId: String): Flow<ApiState<PersonDetailResponse>> {
         return onApiCall { personService.getPersonDetail(personId) }

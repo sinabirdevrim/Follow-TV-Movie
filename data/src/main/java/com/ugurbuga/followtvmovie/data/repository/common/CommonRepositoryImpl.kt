@@ -9,13 +9,15 @@ import com.ugurbuga.followtvmovie.data.model.response.image.ImageResponse
 import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
 import com.ugurbuga.followtvmovie.data.model.response.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.data.model.response.video.VideosResponse
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CommonRepositoryImpl @Inject constructor(
-    private val commonService: CommonService
+    private val commonService: CommonService,
+    dispatcher: CoroutineDispatcher
 ) :
-    CommonRepository, BaseRepository() {
+    CommonRepository, BaseRepository(dispatcher) {
 
     override fun getReviews(
         id: String,

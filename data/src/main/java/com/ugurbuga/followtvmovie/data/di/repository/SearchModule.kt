@@ -1,5 +1,6 @@
 package com.ugurbuga.followtvmovie.data.di.repository
 
+import com.ugurbuga.followtvmovie.core.di.IoDispatcher
 import com.ugurbuga.followtvmovie.data.api.services.SearchService
 import com.ugurbuga.followtvmovie.data.repository.search.SearchRepository
 import com.ugurbuga.followtvmovie.data.repository.search.SearchRepositoryImpl
@@ -7,6 +8,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import retrofit2.Retrofit
 
 @Module
@@ -14,13 +18,15 @@ import retrofit2.Retrofit
 object SearchModule {
 
     @Provides
-    internal fun provideSearchService(retrofit: Retrofit): SearchService {
+    @ViewModelScoped
+     fun provideSearchService(retrofit: Retrofit): SearchService {
         return retrofit.create(SearchService::class.java)
     }
 
     @Provides
-    internal fun provideSearchRepository(service: SearchService): SearchRepository {
-        return SearchRepositoryImpl(service)
+    @ViewModelScoped
+     fun provideSearchRepository(service: SearchService,  @IoDispatcher dispatcher: CoroutineDispatcher): SearchRepository {
+        return SearchRepositoryImpl(service,dispatcher)
     }
 
 }

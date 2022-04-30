@@ -5,13 +5,15 @@ import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.data.model.response.moviedetail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
-    private val movieService: MovieService
+    private val movieService: MovieService,
+    dispatcher: CoroutineDispatcher
 ) :
-    MovieRepository, BaseRepository() {
+    MovieRepository, BaseRepository(dispatcher) {
 
     override fun getPopularMovies(page: Int): Flow<ApiState<PosterGeneralResponse>> {
         return onApiCall { movieService.getPopularMovies(page) }
