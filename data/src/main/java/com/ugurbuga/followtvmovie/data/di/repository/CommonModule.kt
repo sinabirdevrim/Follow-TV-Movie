@@ -1,3 +1,4 @@
+/*
 package com.ugurbuga.followtvmovie.data.di.repository
 
 import com.ugurbuga.followtvmovie.data.repository.common.CommonRepository
@@ -15,4 +16,4 @@ abstract class CommonModule {
     @Binds
     abstract fun bindApiRepository(apiDataRepositoryImpl: CommonRepositoryImpl): CommonRepository
 
-}
+}*/

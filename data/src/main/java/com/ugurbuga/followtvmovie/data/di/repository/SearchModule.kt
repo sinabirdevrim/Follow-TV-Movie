@@ -1,3 +1,4 @@
+/*
 package com.ugurbuga.followtvmovie.data.di.repository
 
 import com.ugurbuga.followtvmovie.data.repository.search.SearchRepository
@@ -15,4 +16,4 @@ abstract class SearchModule {
     abstract fun provideSearchRepository(apiDataRepositoryImpl: SearchRepositoryImpl): SearchRepository
 
 
-}
+}*/

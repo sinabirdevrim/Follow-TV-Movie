@@ -1,3 +1,4 @@
+/*
 package com.ugurbuga.followtvmovie.data.di.repository
 
 import com.ugurbuga.followtvmovie.data.repository.person.PersonRepository
@@ -17,4 +18,4 @@ abstract class PersonModule {
 
 
 
-}
+}*/

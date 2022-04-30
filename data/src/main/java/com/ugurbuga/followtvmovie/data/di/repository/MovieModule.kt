@@ -1,3 +1,4 @@
+/*
 package com.ugurbuga.followtvmovie.data.di.repository
 
 import com.ugurbuga.followtvmovie.data.repository.movie.MovieRepository
@@ -16,4 +17,4 @@ abstract class MovieModule {
     abstract fun provideMovieRepository(apiDataRepositoryImpl: MovieRepositoryImpl): MovieRepository
 
 
-}
+}*/
